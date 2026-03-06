@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  /* Set dark mode as default */
+  html {
+    @apply dark;
+  }
+
+  /* Ensure light mode overrides when dark class is removed */
+  html:not(.dark) {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Focus styles */
+input:focus,
+select:focus,
+textarea:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+}
+
+/* Smooth transitions */
+* {
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Sidebar layout adjustments */
+.ml-64 {
+  margin-left: 16rem;
+}
+
+/* Ensure sidebar is always on top */
+.fixed {
+  z-index: 40;
+}
+
+/* Sticky footer layout */
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the main app container takes full height */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Dark mode specific styles */
+.dark {
+  color-scheme: dark;
+}
+
+/* Dark mode form elements */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: rgb(55 65 81);
+  border-color: rgb(75 85 99);
+  color: white;
+}
+
+.dark input::placeholder,
+.dark select::placeholder,
+.dark textarea::placeholder {
+  color: rgb(156 163 175);
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  --tw-ring-color: rgb(96 165 250);
+  border-color: rgb(96 165 250);
+}
+
+/* Dark mode modal backdrop */
+.dark .bg-black.bg-opacity-50 {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Default dark mode styles for body */
+body {
+  background-color: rgb(17 24 39);
+  color: white;
+}
+
+/* Light mode overrides - ensure they take precedence */
+html:not(.dark) body {
+  background-color: white !important;
+  color: rgb(17 24 39) !important;
+}
+
+/* Light mode form elements */
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+  background-color: white !important;
+  border-color: rgb(209 213 219) !important;
+  color: rgb(17 24 39) !important;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) select::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: rgb(107 114 128) !important;
+}
+
+html:not(.dark) input:focus,
+html:not(.dark) select:focus,
+html:not(.dark) textarea:focus {
+  --tw-ring-color: rgb(59 130 246) !important;
+  border-color: rgb(59 130 246) !important;
+}
+
+/* Ensure light mode modal backdrop */
+html:not(.dark) .bg-black.bg-opacity-50 {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Light mode specific overrides for components */
+html:not(.dark) .bg-gray-50 {
+  background-color: rgb(249 250 251) !important;
+}
+
+html:not(.dark) .bg-gray-100 {
+  background-color: rgb(243 244 246) !important;
+}
+
+html:not(.dark) .bg-gray-200 {
+  background-color: rgb(229 231 235) !important;
+}
+
+html:not(.dark) .bg-white {
+  background-color: white !important;
+}
+
+html:not(.dark) .text-gray-900 {
+  color: rgb(17 24 39) !important;
+}
+
+html:not(.dark) .text-gray-800 {
+  color: rgb(31 41 55) !important;
+}
+
+html:not(.dark) .text-gray-700 {
+  color: rgb(55 65 81) !important;
+}
+
+html:not(.dark) .text-gray-600 {
+  color: rgb(75 85 99) !important;
+}
+
+html:not(.dark) .text-gray-500 {
+  color: rgb(107 114 128) !important;
+}
+
+html:not(.dark) .border-gray-200 {
+  border-color: rgb(229 231 235) !important;
+}
+
+html:not(.dark) .border-gray-300 {
+  border-color: rgb(209 213 219) !important;
+}
+
+/* Ensure scrollbar adapts to theme */
+html:not(.dark) ::-webkit-scrollbar-track {
+  background-color: rgb(243 244 246) !important;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background-color: rgb(209 213 219) !important;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(156 163 175) !important;
+}
